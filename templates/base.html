@@ -1,0 +1,38 @@
+<!-- base HTML file -->
+<!DOCTYPE html>
+<html>
+	<head>
+	    <meta charset="UTF-8">
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">	
+	    <title>IPND My Notes</title>
+	    <link rel="stylesheet" href="static/style.css">
+	    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	    <script src="static/js/animation.js"></script>
+	</head>
+
+  	<body>
+  		<header>
+	  		<div class="title-image">
+	  			<a href="{{url_main}}"><img src="static/images/programmer1.png" alt="image of a programmer" class="img-title"></a>
+	  		</div>
+	  		<div class="title-text">
+	  			<div class="top-text">Intro to Programming</div>
+	  			<div class="sub-text">Udacity Nanodegree Program</div>
+	  		</div>
+	  	</header>
+	  	
+		<!-- The block is taken from main_page.html, stage.html or lesson.html. Depending on url path. -->
+	  	{% block content %}
+	  	{% endblock %}
+
+	  	<footer>
+			<div>
+				(c) 2015 Stanislava Kocalkova, <i><a href="mailto:kocalkova@dobreknihy.sk">kocalkova@dobreknihy.sk</a></i>
+			</div> 
+		</footer>
+
+  	</body>
+</html>
+

@@ -1,0 +1,74 @@
+<!-- Main Page -->
+{% extends "base.html" %}
+
+{% block content%}
+	
+<!-- Lessons Review - Short Extracts -->
+	<section>
+	{% for stage in stages %}
+		<h1 class="alpha">{{stage[0]}}</h1>
+		<div class="lesson">
+			<section class="end-part">
+				<h2 class="beta">{{stage[1]}}</h2>
+				<p>
+					{{stage[2]}}
+				</p>
+				<p>
+					<b><a href="{{url_main + 'stage?p=' + stages.index(stage)|string}}">Read more</a></b>
+				</p>
+			</section>
+		</div>
+	{% endfor %}
+	</section>
+
+<!-- Comment Area -->
+	<a name="comment-area"></a>
+
+<!-- Comment Form -->
+	<section>
+		<h1 class="delta">Comments</h1>
+		<section class="form">
+			<p>Hello visitors! Feel free to leave a comment if you have anything to tell me about this webpage.</p>
+			<form method="post" action="/#comment-area">
+				<div class="form-part">
+					<label><b>Nickname<b></label><br><input type="text" name="nickname">
+				</div>
+				<div class="form-part">
+					<label><b>Comment</b></label><br><textarea name="comment" rows=10 cols=66></textarea>
+				</div>
+				<div class="form-part">
+					<input type="submit">
+				</div>
+				<div class="error">
+					{{error_statement}}
+				</div>
+			</form>
+		</section>
+
+<!-- Submitted Comments -->
+		{% if query %}
+		{% for visit in query %}
+		<section class="comments">
+			<div class="entry-info">
+				<div class="nickname">
+					<b>{{visit.nickname | escape}}</b>
+				</div>
+				<div class="date">
+					{{visit.date}}
+				</div>
+			</div>
+			<div class="com-text">
+				{{visit.comment | escape}}
+			</div>
+		</section>
+		{% endfor %}
+		{% endif %}
+	</section>
+	<div class="nav-container">
+		<span class="nav"><a href="{{url_main}}">Back to Top</a></span>
+	</div>
+		 
+{% endblock %}
+
+
+   

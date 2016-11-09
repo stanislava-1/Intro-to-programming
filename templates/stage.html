@@ -1,0 +1,34 @@
+<!-- Main Page -->
+{% extends "base.html" %}
+
+{% block content%}
+	
+<!-- Stage Review - Short Extracts of Stage Lessons -->
+
+<!-- The template generates the appropriate stage addording to the value of p, 
+p represents the position of the stage in the list STAGE created in content.py -->
+	<div class="path"><a href="{{url_main}}">Maing Page</a> | Stage {{stage_num}}</div>
+	<section>
+	{% for lesson in stage %}
+		<h1 class="alpha">{{lesson[0]}}</h1>
+		<div class="lesson">
+			<section class="end-part">
+				<h2 class="beta">{{lesson[1][0][0]}}</h2>
+				<p>
+					{{lesson[1][0][1][0][0]}}
+				</p>
+				<p>
+					<b><a href="{{url_main + lesson_path + stage.index(lesson)|string}}">Read more</a></b>
+				</p>
+			</section>
+		</div>
+	{% endfor %}
+	</section>
+	<div class="nav-container">
+		<span class="nav"><a href="{{url_stage}}">Back to Top</a> </span>| <span class="nav"><a href="{{url_main}}">Back to Main Page</a></span>
+	</div>
+		 
+{% endblock %}
+
+
+   

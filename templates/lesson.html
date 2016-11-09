@@ -1,0 +1,60 @@
+<!-- Lesson Page -->
+
+{% extends "base.html" %}
+
+
+{% block content %}
+<!-- The template generates the appropriate lesson addording to the value of q, 
+q represents the position of the lesson in the list STAGE_p created in content.py -->
+		<div class="path"><a href="{{url_main}}">Maing Page</a> | <a href="{{url_stage}}">Stage {{stage_num}}</a> | Lesson {{lesson_num}}</div>
+		<section>
+			<h1 class="alpha">{{lesson[0]}}</h1>
+			<div class="lesson">
+			{% for part in lesson[1][:-1] %}
+				<section class="part">
+					<h2 class="beta">{{part[0]}}</h2>
+				{% for paragraph in part[1] %}
+					<!-- Evaluates whether the paragraph has to recieve <p> tags or not.
+					paragraph[1] is True or False. See the helper function in content.py -->
+					{% if paragraph[1] %}
+
+					<p>
+						{{paragraph[0]}}
+					</p>
+
+					{% else %}
+
+					{{paragraph[0]}}
+
+					{% endif %}
+
+				{% endfor %}
+				</section>
+			{% endfor %}
+					<!-- end-parts have different css style than other parts -->
+				<section class="end-part">
+					<h2 class="beta">{{lesson[1][-1][0]}}</h2>
+				{% for paragraph in lesson[1][-1][1] %}
+					<!-- Evaluates whether the paragraph has to recieve <p> tags or not.
+					See the helper function in content.py -->
+					{% if paragraph[1] %}
+
+					<p>
+						{{paragraph[0]}}
+					</p>
+
+					{% else %}
+
+					{{paragraph[0]}}
+
+					{% endif %}
+
+				{% endfor %}
+				</section>
+			</div>
+		</section>
+		<div class="nav-container">
+			<span class="nav"><a href="{{url_lesson}}">Back to Top</a> </span>| <span class="nav"><a href="{{url_stage}}">Back to Stage {{stage_num}}</a> </span>| <span class="nav"><a href="{{url_main}}">Back to Main Page</a></span>
+		</div>
+
+{% endblock %}
